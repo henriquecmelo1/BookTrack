@@ -1,9 +1,74 @@
-import { createServer } from 'node:http';
+import { fastify } from 'fastify';
+import { DatabasePostgreSQL } from './database-postgresql.js';
 
-const server = createServer((req, res) => {
-  res.end('Hello World!');
-});
+const db = new DatabasePostgreSQL();
 
-server.listen(3000, '127.0.0.1', () => {
-  console.log('Listening on 127.0.0.1:3000');
+const server = fastify();
+
+
+
+
+server.get('/', (request, reply)=>{
+    return 'hello world'
+})
+
+
+server.get('/users', async (request, reply)=>{
+  const search = request.query.search
+   
+  
+
+  const users = await db.list_users(search)
+  return users
+})
+
+server.post('/users', async (request, reply)=>{
+
+  const { nome, email } = request.body
+
+  await db.create_user({
+    nome,
+    email
+  })
+
+  return reply.status(201).send()
+
+})
+
+server.put('/users/:id', async (request, reply)=>{
+
+  const { nome, email } = request.body
+
+  const user_id = request.params.id
+
+  await db.update(user_id, {
+    nome,
+    email
+  })
+
+  return reply.status(204).send()
+})
+
+server.delete('/users/:id', async (request, reply)=>{
+  const user_id = request.params.id
+
+  await db.delete(user_id)
+
+  return reply.status(204).send()
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+server.listen({
+  port: 3000,
 });
