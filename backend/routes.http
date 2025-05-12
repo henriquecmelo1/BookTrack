@@ -2,8 +2,8 @@ POST http://localhost:3000/users
 Content-Type: application/json
 
 {
-  "nome": "henrique c melo",
-  "email": "hcm@aa.com"
+  "nome": "guilherme melo",
+  "email": "guimelo@cin.com"
 
 }
 
@@ -13,8 +13,8 @@ GET http://localhost:3000/users
 
 ###
 
-PUT http://localhost:3000/users/1
-Content-Type: application/json
+# PUT http://localhost:3000/users/1
+# Content-Type: application/json
 
 {
   "nome": "Guilherme",

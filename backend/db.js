@@ -1,6 +1,7 @@
+import dotenv from "dotenv";
 import postgres from "postgres";
-import { configDotenv } from "dotenv";
-configDotenv();
+
+dotenv.config({path: "../.env"});
 
 export const sql = postgres(process.env.DATABASE_URL);
 

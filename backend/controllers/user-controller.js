@@ -1,5 +1,5 @@
 import { UserService } from '../services/user-service.js';
-
+import { User } from '../models/user-model.js';
 
 
 export class UserController {
@@ -8,7 +8,7 @@ export class UserController {
     this.userService = new UserService();
     this.listUsers = this.listUsers.bind(this);
     this.createUser = this.createUser.bind(this);
-    this.updateUser = this.updateUser.bind(this);
+    // this.updateUser = this.updateUser.bind(this);
     this.deleteUser = this.deleteUser.bind(this);
 }
     
@@ -24,27 +24,25 @@ export class UserController {
 
     async createUser(request, reply) {
         const { nome, email } = request.body
+        const newUser = new User(nome, email)
 
-        await this.userService.create_user({
-            nome,
-            email
-        })
+        await this.userService.create_user(newUser)
 
         return reply.status(201).send()
     }
 
-    async updateUser(request, reply) {
-        const { nome, email } = request.body
+    // async updateUser(request, reply) {
+    //     const { nome, email } = request.body
 
-        const user_id = request.params.id
+    //     const user_id = request.params.id
 
-        await this.userService.update(user_id, {
-            nome,
-            email
-        })
+    //     await this.userService.update(user_id, {
+    //         nome,
+    //         email
+    //     })
 
-        return reply.status(204).send()
-    }
+    //     return reply.status(204).send()
+    // }
 
     async deleteUser(request, reply) {
         const user_id = request.params.id

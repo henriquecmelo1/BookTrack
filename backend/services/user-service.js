@@ -18,19 +18,20 @@ import { sql } from "../db.js";
     }
 
     async create_user(user){
+        
         await sql`
             INSERT INTO usuarios (nome, email) 
             VALUES (${user.nome}, ${user.email})
         `
     }
 
-    async update(id, user){
-        await sql`
-            UPDATE usuarios 
-            SET nome = ${user.nome}, email = ${user.email}
-            WHERE id = ${id}
-        `
-    }
+    // async update(id, user){
+    //     await sql`
+    //         UPDATE usuarios 
+    //         SET nome = ${user.nome}, email = ${user.email}
+    //         WHERE id = ${id}
+    //     `
+    // }
 
     async delete(id){
         await sql`
