@@ -1,0 +1,14 @@
+GET http://localhost:3000/books
+
+###
+POST http://localhost:3000/books
+Content-Type: application/json
+
+{
+  "titulo": "O Senhor dos Anéis 2",
+  
+  "status": "Quero Ler",
+  
+  
+  "usuario_id": 1
+}

@@ -29,7 +29,11 @@ sql`
     status VARCHAR(10) NOT NULL CHECK (status IN ('Quero Ler', 'Lendo', 'Lido')),
     avaliacao INT CHECK (avaliacao BETWEEN 1 AND 5),
     data_conclusao TIMESTAMP,
-    usuario_id INTEGER NOT NULL REFERENCES usuarios(id) ON DELETE CASCADE
+    usuario_id INTEGER REFERENCES usuarios(id) ON DELETE SET NULL,
+    CHECK (
+        (status = 'Lido' AND (avaliacao IS NULL OR (avaliacao BETWEEN 1 AND 5)))
+        OR (status != 'Lido' AND avaliacao IS NULL)
+    )
 );
 `.then(() => {
   console.log('Tabela livros criada com sucesso!');

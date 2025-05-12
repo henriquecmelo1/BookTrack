@@ -8,7 +8,6 @@ const server = fastify();
 
 
 
-
 server.get('/', (request, reply)=>{
     return 'hello world'
 })
