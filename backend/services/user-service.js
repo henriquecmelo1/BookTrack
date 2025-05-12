@@ -1,10 +1,10 @@
-import { sql } from "./db.js"; 
+import { sql } from "../db.js"; 
  
- export class DatabasePostgreSQL {
-    
+ export class UserService {
 
-
-    async list_users(search){
+     
+     async list_users(search){
+        
         let users = []
         
         if (search){
@@ -13,6 +13,7 @@ import { sql } from "./db.js";
             users = await sql`SELECT * FROM usuarios`;
         }
 
+    
         return users
     }
 

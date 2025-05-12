@@ -2,8 +2,8 @@ POST http://localhost:3000/users
 Content-Type: application/json
 
 {
-  "nome": "Henrique",
-  "email": "bbb@aa.com"
+  "nome": "henrique c melo",
+  "email": "hcm@aa.com"
 
 }
 
@@ -18,8 +18,8 @@ Content-Type: application/json
 
 {
   "nome": "Guilherme",
-  "email": "gui@gui.com"
+  "email": "guilherme@gui.com"
 }
 
 ###
-DELETE http://localhost:3000/users/2
+DELETE http://localhost:3000/users/3
