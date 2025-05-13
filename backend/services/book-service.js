@@ -6,7 +6,7 @@ export class BookService {
         let books = []
 
         if (search) {
-            books = await sql`SELECT * FROM livros WHERE nome ILIKE ${'%' + search + '%'}`
+            books = await sql`SELECT * FROM livros WHERE titulo ILIKE ${'%' + search + '%'}`
         } else {
             books = await sql`SELECT * FROM livros`;
         }
