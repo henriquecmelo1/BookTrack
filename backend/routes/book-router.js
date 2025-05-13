@@ -6,6 +6,8 @@ export async function bookRouter(server) {
 
   server.get('/books', bookController.listBooks)
 
+  server.get('/books/export', bookController.exportBooks)
+
   server.get('/books/:id', bookController.getBook)
   
   server.post('/books', bookController.createBook)

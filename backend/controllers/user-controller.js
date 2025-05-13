@@ -1,26 +1,42 @@
 import { UserService } from '../services/user-service.js';
 import { User } from '../models/user-model.js';
+import {writeFile} from 'fs/promises';
+import path from 'path';
 
 
 export class UserController {
 
     constructor() {
-    this.userService = new UserService();
-    this.listUsers = this.listUsers.bind(this);
-    this.getUser = this.getUser.bind(this);
-    this.createUser = this.createUser.bind(this);
-    // this.updateUser = this.updateUser.bind(this);
-    this.deleteUser = this.deleteUser.bind(this);
-}
-    
-    
+        this.userService = new UserService();
+        this.listUsers = this.listUsers.bind(this);
+        this.getUser = this.getUser.bind(this);
+        this.exportUsers = this.exportUsers.bind(this);
+        this.createUser = this.createUser.bind(this);
+        // this.updateUser = this.updateUser.bind(this);
+        this.deleteUser = this.deleteUser.bind(this);
+    }
+
+
 
     async listUsers(request, reply) {
-        const search = request.query.search;
-        
+        const search = request.query.nome;
+
         const users = await this.userService.list_users(search);
         return users
 
+    }
+
+    async exportUsers(request, reply) {
+
+        const search = request.query.search;
+        const users = await this.userService.list_users(search);
+
+        const jsonPath = path.resolve('data', 'users.json');
+        const jsonData = JSON.stringify(users, null, 2);
+        await writeFile(jsonPath, jsonData);
+         
+
+        return users;
     }
 
     async getUser(request, reply) {
