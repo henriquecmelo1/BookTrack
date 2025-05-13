@@ -9,6 +9,10 @@ export async function userRouter(server) {
 
   server.get('/users', userController.listUsers)
 
+  server.get('/users/export', userController.exportUsers)
+
+
+
   server.get('/users/:id', userController.getUser)
 
   server.post('/users', userController.createUser)

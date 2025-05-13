@@ -1,11 +1,15 @@
 import { BookService } from "../services/book-service.js";
 import { Book } from "../models/book-model.js";
+import { writeFile } from 'fs/promises';
+import path from 'path';
+
 
 export class BookController {
     constructor() {
         this.bookService = new BookService();
         this.listBooks = this.listBooks.bind(this);
         this.getBook = this.getBook.bind(this);
+        this.exportBooks = this.exportBooks.bind(this);
         this.createBook = this.createBook.bind(this);
         this.updateBook = this.updateBook.bind(this);
         this.deleteBook = this.deleteBook.bind(this);
@@ -13,10 +17,20 @@ export class BookController {
 
 
     async listBooks(request, reply) {
-        const search = request.query.search;
+        const search = request.query.titulo;
 
         const books = await this.bookService.list_books(search);
         return books
+    }
+
+    async exportBooks(request, reply) {
+        const search = request.query.search;
+        const books = await this.bookService.list_books(search);
+
+        const jsonPath = path.resolve('data', 'books.json');
+        const jsonData = JSON.stringify(books, null, 2);
+        await writeFile(jsonPath, jsonData);
+        return books;
     }
 
     async getBook(request, reply) {
