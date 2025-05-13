@@ -5,7 +5,8 @@
     "postgres": "^3.4.5"
   },
   "scripts": {
-    
+    "create": " node ./database/create-tables.js",
+    "start": " node server.js"
   },
   "type": "module"
 }
