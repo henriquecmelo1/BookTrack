@@ -1,0 +1,36 @@
+GET http://localhost:3000/books
+
+###
+POST http://localhost:3000/books
+Content-Type: application/json
+
+{
+  "titulo": "O Pequeno Príncipe",
+  "autor": "Antoine de Saint-Exupéry",
+  "status": "Lido",
+  "avaliacao": 5,
+  "data_conclusao": "2023-10-10",
+  "usuario_id": 1
+}
+
+
+###
+GET http://localhost:3000/books/5
+
+###
+PUT http://localhost:3000/books/5/1
+Content-Type: application/json
+
+{
+  "titulo": "A Revolução dos Bichos",
+  "autor": "George Orwell",
+  "status": "Lido",
+  
+  
+  "usuario_id": 4
+}
+
+
+###
+
+DELETE http://localhost:3000/books/3/1

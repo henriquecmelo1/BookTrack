@@ -1,0 +1,11 @@
+{
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "fastify": "^5.3.2",
+    "postgres": "^3.4.5"
+  },
+  "scripts": {
+    
+  },
+  "type": "module"
+}
