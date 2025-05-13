@@ -12,9 +12,11 @@ server.get('/books', bookController.listBooks )
 
 server.post('/books', bookController.createBook )
 
-// server.put('/books/:id', bookController.updateBook )
+server.get('/books/:id', bookController.getBook )
 
-// server.delete('/books/:id', bookController.deleteBook )
+server.put('/books/:id/:id_usuario', bookController.updateBook )
+
+server.delete('/books/:id/:id_usuario', bookController.deleteBook )
 
 
 

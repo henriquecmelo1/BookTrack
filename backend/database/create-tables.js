@@ -33,6 +33,10 @@ sql`
     CHECK (
         (status = 'Lido' AND (avaliacao IS NULL OR (avaliacao BETWEEN 1 AND 5)))
         OR (status != 'Lido' AND avaliacao IS NULL)
+    ),
+    CHECK (
+        (status = 'Lido' AND data_conclusao IS NOT NULL)
+        OR (status != 'Lido' AND data_conclusao IS NULL)
     )
 );
 `.then(() => {
