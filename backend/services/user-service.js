@@ -44,6 +44,12 @@ import { sql } from "../database/db.js";
     // }
 
     async delete(id){
+        const user = await this.get_user(id)
+
+        if (!user){
+            throw new Error('Usuário não encontrado')
+        }
+        
         await sql`
             DELETE FROM usuarios 
             WHERE id = ${id}
