@@ -17,6 +17,16 @@ import { sql } from "../database/db.js";
         return users
     }
 
+    async get_user(id){
+        const user = await sql`SELECT * FROM usuarios WHERE id = ${id}`
+
+        if (user.length === 0){
+            throw new Error('Usuário não encontrado')
+        }
+        
+        return user[0]
+    }
+
     async create_user(user){
         
         await sql`
