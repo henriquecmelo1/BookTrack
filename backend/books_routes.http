@@ -5,12 +5,11 @@ POST http://localhost:3000/books
 Content-Type: application/json
 
 {
-  "titulo": "O Pequeno Príncipe",
-  "autor": "Antoine de Saint-Exupéry",
+  "titulo": "Harry Potter e o Prisioneiro de Azkaban",
+  "autor": "J.K. Rowling",
   "status": "Lido",
   "avaliacao": 5,
-  "data_conclusao": "2023-10-10",
-  "usuario_id": 1
+  "usuario_id": 2
 }
 
 

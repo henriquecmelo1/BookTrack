@@ -47,7 +47,7 @@ export class BookController {
             newBook.data_conclusao = new Date()
         }
 
-        console.log(newBook);
+    
         
 
 

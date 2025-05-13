@@ -2,8 +2,8 @@ POST http://localhost:3000/users
 Content-Type: application/json
 
 {
-  "nome": "guilherme melo",
-  "email": "guimelo@cin.com"
+  "nome": "henrique elo",
+  "email": "henriqueelo@email.com"
 
 }
 
@@ -16,10 +16,10 @@ GET http://localhost:3000/users
 # PUT http://localhost:3000/users/1
 # Content-Type: application/json
 
-{
-  "nome": "Guilherme",
-  "email": "guilherme@gui.com"
-}
+# {
+#   "nome": "Guilherme",
+#   "email": "guilherme@gui.com"
+# }
 
 ###
 DELETE http://localhost:3000/users/3

@@ -7,6 +7,7 @@ export class UserController {
     constructor() {
     this.userService = new UserService();
     this.listUsers = this.listUsers.bind(this);
+    this.getUser = this.getUser.bind(this);
     this.createUser = this.createUser.bind(this);
     // this.updateUser = this.updateUser.bind(this);
     this.deleteUser = this.deleteUser.bind(this);
@@ -20,6 +21,18 @@ export class UserController {
         const users = await this.userService.list_users(search);
         return users
 
+    }
+
+    async getUser(request, reply) {
+        const user_id = request.params.id
+
+        const user = await this.userService.get_user(user_id)
+
+        if (!user) {
+            return reply.status(404).send({ message: 'Usuário não encontrado' })
+        }
+
+        return user
     }
 
     async createUser(request, reply) {

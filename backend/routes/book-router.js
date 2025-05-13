@@ -1,25 +1,18 @@
 import { BookController } from "../controllers/book-controller.js";
-import { fastify } from 'fastify';
-
-const bookController = new BookController();
-const server = fastify();
-
-server.get('/', (request, reply)=>{
-    return 'hello book'
-})
-
-server.get('/books', bookController.listBooks )
-
-server.post('/books', bookController.createBook )
-
-server.get('/books/:id', bookController.getBook )
-
-server.put('/books/:id/:id_usuario', bookController.updateBook )
-
-server.delete('/books/:id/:id_usuario', bookController.deleteBook )
 
 
+export async function bookRouter(server) {
+  const bookController = new BookController();
 
-server.listen({
-  port: 3000,
-});
+  server.get('/books', bookController.listBooks)
+
+  server.get('/books/:id', bookController.getBook)
+  
+  server.post('/books', bookController.createBook)
+
+  server.put('/books/:id/:id_usuario', bookController.updateBook)
+
+  server.delete('/books/:id/:id_usuario', bookController.deleteBook)
+
+}
+
