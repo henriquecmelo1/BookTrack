@@ -96,7 +96,9 @@ export class BookController {
         const updatedBook = new Book(...Object.values(bookData))
 
         if (book.status != 'Lido' && updatedBook.status == 'Lido') {
-            updatedBook.data_conclusao = new Date()
+            if (updatedBook.data_conclusao == null) {
+                updatedBook.data_conclusao = new Date()
+            }
         }
 
         await this.bookService.update_book(id, updatedBook)
